@@ -2,6 +2,7 @@ package org.cyd.cloud.client;
 
 import com.netflix.appinfo.InstanceInfo;
 import com.netflix.discovery.EurekaClient;
+import com.netflix.discovery.shared.Application;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -16,6 +17,7 @@ import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Stream;
 
 @SpringBootApplication
 @EnableEurekaClient
@@ -41,10 +43,12 @@ public class CloudClientApplication {
         return server.getHomePageUrl();
     }
 
-    @RequestMapping("/getServerHome")
-    public String getServerHome(){
-        InstanceInfo server = discoveryClient.getNextServerFromEureka("cloud-server", false);
-        String forObject = restTemplate.getForObject(server.getHomePageUrl(), String.class);
+    @RequestMapping("/getServerHome/{version}")
+    public String getServerHome(@PathVariable("version")String version){
+        Application application = discoveryClient.getApplication("cloud-server");
+        List<InstanceInfo> instances = application.getInstances();
+        InstanceInfo serviceInstance = instances.stream().filter(a -> a.getMetadata().get("version").equals(version)).findFirst().get();
+        String forObject = restTemplate.getForObject(serviceInstance.getHomePageUrl(), String.class);
         System.out.println("----------------------------执行-------");
         return forObject;
     }
