@@ -11,6 +11,7 @@ public class CloudServerApplication {
 
     @RequestMapping("/")
     public String home() {
+        int  i=1/0;
         return "Hello World";
     }
     public static void main(String[] args) {
