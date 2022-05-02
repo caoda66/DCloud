@@ -3,12 +3,6 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <parent>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.6.7</version>
-        <relativePath/> <!-- lookup parent from repository -->
-    </parent>
     <groupId>org.cyd</groupId>
     <artifactId>cloud-parent</artifactId>
     <version>1.0-SNAPSHOT</version>
@@ -16,7 +10,8 @@
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
-        <spring-cloud.version>2021.0.2</spring-cloud.version>
+        <spring-cloud.version>Hoxton.SR12</spring-cloud.version>
+<!--        <spring-cloud.version>Hoxton.SR3</spring-cloud.version>-->
     </properties>
 
     <dependencyManagement>
@@ -28,10 +23,17 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-parent</artifactId>
+                <version>2.3.12.RELEASE</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
         </dependencies>
     </dependencyManagement>
     <modules>
-        <module>cloud-zuul</module>
+<!--        <module>cloud-zuul</module>-->
         <module>cloud-eurake</module>
         <module>cloud-client</module>
         <module>cloud-server</module>

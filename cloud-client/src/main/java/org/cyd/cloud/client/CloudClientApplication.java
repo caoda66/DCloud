@@ -3,6 +3,8 @@ package org.cyd.cloud.client;
 import com.netflix.appinfo.InstanceInfo;
 import com.netflix.discovery.EurekaClient;
 import com.netflix.discovery.shared.Application;
+import org.cyd.cloud.client.config.AvoidScan;
+import org.cyd.cloud.client.config.RibbonClientConfiguration;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -10,6 +12,9 @@ import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.cloud.netflix.eureka.EurekaServiceInstance;
+import org.springframework.cloud.netflix.ribbon.RibbonClient;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.FilterType;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -22,6 +27,8 @@ import java.util.stream.Stream;
 @SpringBootApplication
 @EnableEurekaClient
 @RestController
+//@RibbonClient(name = "cloud-a",configuration = RibbonClientConfiguration.class) 对单个服务起作用
+//@ComponentScan(excludeFilters = {@ComponentScan.Filter(type = FilterType.ANNOTATION,value = {AvoidScan.class})}) 让spring不扫描AvoidScan类
 public class CloudClientApplication {
 
     @Autowired
