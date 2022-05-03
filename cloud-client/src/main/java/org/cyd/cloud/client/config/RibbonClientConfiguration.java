@@ -11,14 +11,14 @@ import org.springframework.context.annotation.Configuration;
  * @author caoda
  * @date 2022/5/2
  */
-@Configuration
-@AvoidScan
-public class RibbonClientConfiguration {
-    @Autowired
-    IClientConfig config;
-
-    @Bean
-    public IRule ribbonRule(IClientConfig config) {
-        return new RandomRule();
-    }
-}
+//@Configuration
+//@AvoidScan
+//public class RibbonClientConfiguration {
+//    @Autowired
+//    IClientConfig config;
+//
+//    @Bean
+//    public IRule ribbonRule(IClientConfig config) {
+//        return new RandomRule();
+//    }
+//}
