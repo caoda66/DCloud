@@ -10,6 +10,7 @@ import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.cloud.netflix.eureka.EurekaServiceInstance;
+import org.springframework.cloud.netflix.hystrix.EnableHystrix;
 import org.springframework.cloud.netflix.ribbon.RibbonClient;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.context.annotation.ComponentScan;
@@ -27,6 +28,7 @@ import java.util.stream.Stream;
 @EnableEurekaClient
 @RestController
 @EnableFeignClients
+@EnableHystrix
 //@RibbonClient(name = "cloud-a",configuration = RibbonClientConfiguration.class) 对单个服务起作用
 //@ComponentScan(excludeFilters = {@ComponentScan.Filter(type = FilterType.ANNOTATION,value = {AvoidScan.class})}) 让spring不扫描AvoidScan类
 public class CloudClientApplication {

@@ -7,8 +7,8 @@ import org.springframework.web.bind.annotation.GetMapping;
  * @author caoda
  * @date 2022/5/3
  */
-@FeignClient(name = "cloud-server")
+@FeignClient(name = "cloud-server",path = "/server")
 public interface ServerService {
-    @GetMapping("/server//hello")
+    @GetMapping("/hello")
     String hello();
 }
