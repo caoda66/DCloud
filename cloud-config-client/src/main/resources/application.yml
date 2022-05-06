@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: config-client
+
+server:
+      port: 8087
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"

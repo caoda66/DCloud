@@ -1,0 +1,10 @@
+{
+   "properties": [
+     {
+       "name": "cyd.cloud.config.refreshInterval",
+       "type": "java.lang.Long",
+       "defaultValue": 5,
+       "description": "自动刷新时间"
+     }
+   ]
+}
